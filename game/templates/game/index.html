@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Home | DjGame{% endblock %}
+
+{% block content %}
+    <section class="hero">
+        <h1>Welcome to DjGame</h1>
+        {% if user.is_authenticated %}
+            <p>Ready to play, {{ user.username }}?</p>
+        {% else %}
+            <p>Log in to save your progress.</p>
+        {% endif %}
+    </section>
+{% endblock %}

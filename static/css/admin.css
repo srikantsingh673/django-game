@@ -1,0 +1,51 @@
+/* Recolours the Django admin with the project theme (#3ea9a4, #94d2bd). */
+
+html[data-theme="light"],
+:root {
+    --primary: #3ea9a4;
+    --secondary: #287571;
+    --accent: #94d2bd;
+    --primary-fg: #fff;
+
+    --header-color: #e3f4ee;
+    --header-bg: var(--secondary);
+
+    --breadcrumbs-fg: #c8ebe0;
+    --breadcrumbs-link-fg: #fff;
+    --breadcrumbs-bg: #1f5c59;
+
+    --link-fg: #287571;
+    --link-hover-color: #1a4d4a;
+    --link-selected-fg: #287571;
+
+    --selected-row: #e3f4ee;
+
+    --button-bg: var(--secondary);
+    --button-hover-bg: #1f5c59;
+    --default-button-bg: #1f5c59;
+    --default-button-hover-bg: var(--secondary);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary: #1f5c59;
+        --breadcrumbs-bg: var(--primary);
+
+        --link-fg: #94d2bd;
+        --link-hover-color: #b8e3d4;
+        --link-selected-fg: #3ea9a4;
+
+        --selected-row: #0f3533;
+    }
+}
+
+html[data-theme="dark"] {
+    --primary: #1f5c59;
+    --breadcrumbs-bg: var(--primary);
+
+    --link-fg: #94d2bd;
+    --link-hover-color: #b8e3d4;
+    --link-selected-fg: #3ea9a4;
+
+    --selected-row: #0f3533;
+}

@@ -1,0 +1,211 @@
+:root {
+    /* Theme colours */
+    --primary: #3ea9a4;
+    --secondary: #94d2bd;
+
+    /* Darker shades of --primary for text and links; --primary itself is too light to read on white */
+    --primary-dark: #287571;
+    --primary-darker: #1f5c59;
+
+    --bg: #f1f9f6;
+    --surface: #ffffff;
+    --text: #16302e;
+    --muted: #5a7472;
+    --border: #cfe9e0;
+
+    --danger: #dc2626;
+    --warning: #d97706;
+
+    /* Fonts (loaded from Google Fonts in base.html) */
+    --font-display: "Bitcount Ink", system-ui, sans-serif;
+    --font-body: "Playwrite CA Guides", system-ui, sans-serif;
+}
+
+/*
+ * Bitcount Ink is a colour font: it ignores `color` and paints with its own
+ * built-in palette (grey base + magenta overlay). These recolour it with the theme.
+ * Entry 27 = dot base, 14 = translucent overlay, 13 / 15 = highlights.
+ */
+@font-palette-values --theme-ink {
+    font-family: "Bitcount Ink";
+    override-colors: 27 #16302e, 14 #3ea9a4cc;
+}
+
+/* Solid dark dots, for Bitcount text sitting on a teal background */
+@font-palette-values --dark-ink {
+    font-family: "Bitcount Ink";
+    override-colors: 27 #16302e, 14 #16302e99, 13 #16302e, 15 #ffffff33;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-body);
+    line-height: 1.8;
+    background: var(--bg);
+    color: var(--text);
+}
+
+::selection {
+    background: var(--secondary);
+    color: var(--text);
+}
+
+a {
+    color: var(--primary-dark);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--primary-darker);
+    text-decoration: underline;
+}
+
+:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-palette: --theme-ink;
+    line-height: 1.2;
+    color: var(--primary-dark);
+}
+
+/* Navbar */
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    color: var(--text);
+}
+
+.navbar nav {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.navbar a {
+    color: var(--text);
+    font-weight: 500;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 600;
+    font-palette: --dark-ink;
+    line-height: 1;
+}
+
+.brand:hover {
+    text-decoration: none;
+}
+
+.logo {
+    width: 32px;
+    height: 32px;
+}
+
+/* Layout */
+
+.container {
+    flex: 1;
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.hero {
+    text-align: center;
+    padding: 3rem 1rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--primary);
+    border-radius: 8px;
+}
+
+.hero h1 {
+    margin-top: 0;
+}
+
+/* Buttons */
+
+.btn {
+    display: inline-block;
+    padding: 0.6rem 1.25rem;
+    border: none;
+    border-radius: 6px;
+    background: var(--primary);
+    color: var(--text);
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    font-palette: --dark-ink;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: var(--secondary);
+    color: var(--text);
+    text-decoration: none;
+}
+
+.btn-secondary {
+    background: var(--secondary);
+}
+
+.btn-secondary:hover {
+    background: var(--primary);
+}
+
+/* Flash messages */
+
+.messages {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+}
+
+.message {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 6px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--secondary);
+}
+
+.message.success { border-left-color: var(--primary); }
+.message.error { border-left-color: var(--danger); }
+.message.warning { border-left-color: var(--warning); }
+
+/* Footer */
+
+.footer {
+    padding: 1rem;
+    text-align: center;
+    color: var(--muted);
+    background: var(--surface);
+    border-top: 3px solid var(--secondary);
+}
+
+.footer p {
+    margin: 0;
+}
