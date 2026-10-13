@@ -87,6 +87,11 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
 
+# Uploaded files (game thumbnails)
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+
 # Authentication
 # https://docs.djangoproject.com/en/6.1/topics/auth/default/
 LOGIN_URL = 'account:login'

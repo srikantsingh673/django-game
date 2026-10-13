@@ -386,6 +386,58 @@ pre.json {
     }
 }
 
+/* Game library & play page */
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.25rem;
+    margin-top: 2rem;
+}
+
+.game-card {
+    display: block;
+    padding: 1rem;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--primary);
+    border-radius: 8px;
+}
+
+.game-card:hover {
+    color: var(--text);
+    text-decoration: none;
+    border-color: var(--primary);
+}
+
+.game-card img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: contain;
+    background: var(--bg);
+    border-radius: 6px;
+}
+
+.game-card h2 {
+    margin: 0.75rem 0 0.25rem;
+    font-size: 1.25rem;
+}
+
+.game-card p {
+    margin: 0;
+    color: var(--muted);
+}
+
+.play canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+}
+
 /* Flash messages */
 
 .messages {

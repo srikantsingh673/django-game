@@ -9,7 +9,8 @@ class ProfileView(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        game_data = GameData.objects.filter(user=self.request.user).first()
-        context['game_data'] = game_data
-        context['game_data_json'] = json.dumps(game_data.data, indent=2) if game_data else ''
+        saves = GameData.objects.filter(user=self.request.user).select_related('game').order_by('-updated')
+        for save in saves:
+            save.json = json.dumps(save.data, indent=2)
+        context['saves'] = saves
         return context

@@ -28,14 +28,16 @@
 
     <section class="card">
         <h2>Game progress</h2>
-        {% if game_data %}
-            <p>Last saved {{ game_data.updated|timesince }} ago.</p>
+        {% for save in saves %}
             <details>
-                <summary>Saved data</summary>
-                <pre class="json">{{ game_data_json }}</pre>
+                <summary>
+                    <a href="{% url 'game:play' save.game.slug %}">{{ save.game.title }}</a>
+                    · saved {{ save.updated|timesince }} ago
+                </summary>
+                <pre class="json">{{ save.json }}</pre>
             </details>
-        {% else %}
+        {% empty %}
             <p>No saved progress yet. <a href="{% url 'game:index' %}">Start playing</a></p>
-        {% endif %}
+        {% endfor %}
     </section>
 {% endblock %}
