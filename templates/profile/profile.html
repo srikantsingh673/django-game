@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Profile | DjGame{% endblock %}
+
+{% block content %}
+    <section class="card profile-header">
+        <img src="{% static 'assets/ghost.png' %}" alt="" class="auth-logo" width="64" height="64">
+        <div>
+            <h1>{{ user.username }}</h1>
+            <p class="muted">Member since {{ user.date_joined|date:"j M Y" }}</p>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>Account</h2>
+        <dl class="details">
+            <dt><b>Username</b></dt>
+            <dd>{{ user.username }}</dd>
+
+            <dt><b>Email</b></dt>
+            <dd>{{ user.email|default:"Not set" }}</dd>
+
+            <dt><b>Last login</b></dt>
+            <dd>{{ user.last_login|date:"j M Y, H:i" }}</dd>
+        </dl>
+    </section>
+
+    <section class="card">
+        <h2>Game progress</h2>
+        {% if game_data %}
+            <p>Last saved {{ game_data.updated_at|timesince }} ago.</p>
+            <details>
+                <summary>Saved data</summary>
+                <pre class="json">{{ game_data_json }}</pre>
+            </details>
+        {% else %}
+            <p>No saved progress yet. <a href="{% url 'game:index' %}">Start playing</a></p>
+        {% endif %}
+    </section>
+{% endblock %}
