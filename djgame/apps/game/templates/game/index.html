@@ -8,7 +8,7 @@
         {% if user.is_authenticated %}
             <p>Ready to play, {{ user.username }}?</p>
         {% else %}
-            <p><a href="{% url 'login' %}">Log in</a> to save your progress.</p>
+            <p><a href="{% url 'account:login' %}">Log in</a> to save your progress.</p>
         {% endif %}
     </section>
 {% endblock %}

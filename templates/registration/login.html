@@ -16,7 +16,7 @@
             </ul>
         {% endif %}
 
-        <form method="post" action="{% url 'login' %}" class="auth-form">
+        <form method="post" action="{% url 'account:login' %}" class="auth-form">
             {% csrf_token %}
 
             <div class="form-field">

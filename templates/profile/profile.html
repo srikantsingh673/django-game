@@ -29,7 +29,7 @@
     <section class="card">
         <h2>Game progress</h2>
         {% if game_data %}
-            <p>Last saved {{ game_data.updated_at|timesince }} ago.</p>
+            <p>Last saved {{ game_data.updated|timesince }} ago.</p>
             <details>
                 <summary>Saved data</summary>
                 <pre class="json">{{ game_data_json }}</pre>
