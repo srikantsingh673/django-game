@@ -241,6 +241,34 @@ h1, h2, h3 {
     outline-offset: 0;
 }
 
+/* Show / hide password button (added by main.js) */
+
+.password-field {
+    position: relative;
+}
+
+.form-field .password-field input {
+    width: 100%;
+    padding-right: 2.75rem;
+}
+
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 0.5rem;
+    transform: translateY(-50%);
+    display: flex;
+    border: none;
+    background: none;
+    color: var(--muted);
+    cursor: pointer;
+}
+
+/* Edge has its own reveal button; hide it so there aren't two eyes */
+input::-ms-reveal {
+    display: none;
+}
+
 .form-field .errorlist {
     margin: 0;
     padding: 0;
@@ -262,6 +290,23 @@ h1, h2, h3 {
 
 .auth-form .btn {
     margin-top: 0.5rem;
+}
+
+.help-text {
+    color: var(--muted);
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+.help-text ul {
+    margin: 0;
+    padding-left: 1.1rem;
+}
+
+.auth-switch {
+    margin: 1.5rem 0 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
 }
 
 /* Cards & profile */

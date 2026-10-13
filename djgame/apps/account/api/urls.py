@@ -1,3 +1,4 @@
+from djgame.apps.account.api.views.register import RegisterView
 from djgame.apps.account.api.views.profile import ProfileView
 from djgame.apps.account.api.views.logout import LogoutView
 from djgame.apps.account.api.views.login import LoginView
@@ -11,6 +12,12 @@ urlpatterns = [
         'login/',
         LoginView.as_view(),
         name='login'
+    ),
+
+    path(
+        'register/',
+        RegisterView.as_view(),
+        name='register'
     ),
 
     path(

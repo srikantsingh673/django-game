@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Sign up | DjGame{% endblock %}
+
+{% block content %}
+    <section class="auth-card">
+        <img src="{% static 'assets/ghost.png' %}" alt="" class="auth-logo" width="64" height="64">
+        <h1>Sign up</h1>
+
+        {% if form.non_field_errors %}
+            <ul class="form-errors">
+                {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <form method="post" action="{% url 'account:register' %}" class="auth-form">
+            {% csrf_token %}
+
+            {% for field in form %}
+                <div class="form-field">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {{ field.errors }}
+                    {% if field.help_text %}
+                        <div class="help-text">{{ field.help_text }}</div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <input type="hidden" name="next" value="{{ next }}">
+            <button type="submit" class="btn">Create account</button>
+        </form>
+
+        <p class="auth-switch">
+            Already have an account?
+            <a href="{% url 'account:login' %}{% if next %}?next={{ next|urlencode }}{% endif %}">Log in</a>
+        </p>
+    </section>
+{% endblock %}

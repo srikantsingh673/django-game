@@ -34,5 +34,10 @@
             <input type="hidden" name="next" value="{{ next }}">
             <button type="submit" class="btn">Log in</button>
         </form>
+
+        <p class="auth-switch">
+            New here?
+            <a href="{% url 'account:register' %}{% if next %}?next={{ next|urlencode }}{% endif %}">Create an account</a>
+        </p>
     </section>
 {% endblock %}
